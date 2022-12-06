@@ -6,7 +6,7 @@ public class Fatura {
 	
 	private int MesAno;
 	
-	private UC unidadeConsumidora;
+	private UC unidadeConsumidora ;
 	
 	private int consumo;
 	
@@ -56,8 +56,15 @@ public class Fatura {
 		return 0;
 	}
 	public String toString () {
-		return "";
+		String texto = "";
+		texto = "-----------------------------------"
+				+"\n fatura: " + getFaturald()
+				+ "\n Mes e Ano" + getMesAno()
+				+ "\n unidade Consumidora" + getUnidadeConsumidora().toString()
+				+ "\n consumo" + getConsumo()
+				+ "\n pago" + isPago();
+		return texto;
 	}
-	//faltou o metodo imprimirfatura.
+	
 
 }
