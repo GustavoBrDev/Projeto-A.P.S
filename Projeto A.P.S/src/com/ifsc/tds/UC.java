@@ -1,6 +1,7 @@
 package com.ifsc.tds;
 
 public class UC {
+	//botar metodo construtor
 	private int ucld;
 	
 	private Cliente cliente;
