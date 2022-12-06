@@ -1,6 +1,15 @@
 package com.ifsc.tds;
 
 public class Endereco {
+	
+	public Endereco (String rua, int numero, String cep, String cidade, String estado) {
+		this.rua = rua;
+		this.numero = numero;
+		this.cep= cep;
+		this.cidade = cidade;
+		this.estado = estado;
+	}
+	
 	private String rua;
 	
 	private int numero;
@@ -49,6 +58,10 @@ public class Endereco {
 
 	public void setRua(String rua) {
 		this.rua = rua;
+	}
+	
+	public String toString() {
+		return "";
 	}
 
 }

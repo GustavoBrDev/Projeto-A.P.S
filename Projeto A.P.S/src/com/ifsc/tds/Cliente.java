@@ -2,13 +2,17 @@ package com.ifsc.tds;
 
 public class Cliente  {
 	
+	public Cliente (int clienteId, String nome, Endereco endereco) {
+		this.clienteld = clienteId;
+		this.nome = nome;
+		this.endereco = endereco;
+	}
+	
 	private int clienteld;
 	
 	private String nome;
 	
 	private Endereco endereco;
-	
-	
 
 	public Endereco getEndereco() {
 		return endereco;
@@ -32,6 +36,10 @@ public class Cliente  {
 
 	public void setClienteld(int clienteld) {
 		this.clienteld = clienteld;
+	}
+	
+	public String toString () {
+		return "";
 	}
 	
 	
