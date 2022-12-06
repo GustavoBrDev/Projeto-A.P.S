@@ -1,14 +1,21 @@
 package com.ifsc.tds;
 
 public class UC {
-	//botar metodo construtor
+	
+	public UC (int ucId, Cliente cliente, int leituraAnterior, int leituraAtual) {
+		this.ucld = ucId;
+		this.cliente = cliente;
+		this.leituraAnterior = leituraAnterior;
+		this.leituraAtual = leituraAtual;
+	}
+	
 	private int ucld;
 	
 	private Cliente cliente;
 	
-	private int LeituraAnterior;
+	private int leituraAnterior;
 	
-	private int LeituraAtul;
+	private int leituraAtual;
 	
 	private Endereco endereco;
 
@@ -29,19 +36,19 @@ public class UC {
 	}
 
 	public int getLeituraAnterior() {
-		return LeituraAnterior;
+		return leituraAnterior;
 	}
 
 	public void setLeituraAnterior(int leituraAnterior) {
-		LeituraAnterior = leituraAnterior;
+		this.leituraAnterior = leituraAnterior;
 	}
 
-	public int getLeituraAtul() {
-		return LeituraAtul;
+	public int getLeituraAtual() {
+		return leituraAtual;
 	}
 
-	public void setLeituraAtul(int leituraAtul) {
-		LeituraAtul = leituraAtul;
+	public void setLeituraAtual(int leituraAtul) {
+		this.leituraAtual = leituraAtul;
 	}
 
 	public Endereco getEndereco() {
@@ -50,6 +57,18 @@ public class UC {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+	public String toString () {
+		return "";
+	}
+	
+	public int faturar (int leitura) {
+		return leitura;
+	}
+	
+	public int pegarConsumo () {
+		return 0;
 	}
 
 }
