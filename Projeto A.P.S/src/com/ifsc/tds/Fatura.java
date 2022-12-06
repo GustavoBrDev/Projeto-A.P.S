@@ -58,6 +58,6 @@ public class Fatura {
 	public String toString () {
 		return "";
 	}
-	
+	//faltou o metodo imprimirfatura.
 
 }
