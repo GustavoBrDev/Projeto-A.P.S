@@ -2,7 +2,7 @@ package com.ifsc.tds;
 
 public abstract class Cliente  {
 	
-	public Cliente (int clienteId, String nome, Endereco endereco, Fatura fatura) {
+	public Cliente (int clienteId, String nome, Endereco endereco) {
 		this.clienteld = clienteId;
 		this.nome = nome;
 		this.endereco = endereco;
