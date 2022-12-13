@@ -7,6 +7,14 @@ public class Principal {
 	private static int qtdeClientes=0;
 	
 	private static Cliente clientesVetor [];
+	
+	private static int qtdeUC=0;
+	
+	private static Cliente ucVetor [];
+	
+	private static int qtdeFaturas=0;
+	
+	private static Cliente faturasVetor [];
 
 	public static void main(String[] args) {
 
@@ -117,7 +125,8 @@ public class Principal {
 	}
 	
 	public static void fazerLeitura () {
-		
+		//Fatorar a UC
+		//Primeiramente, realizar o cadastro do UC
 	}
 	public static void faturarConsumo () {
 		
