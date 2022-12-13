@@ -2,8 +2,8 @@ package com.ifsc.tds;
 
 public class PessoaFisica extends Cliente {
 	
-	public PessoaFisica(int clienteId, String nome, Endereco endereco, String cpf, Fatura fatura) {
-		super(clienteId, nome, endereco, fatura);
+	public PessoaFisica(int clienteId, String nome, Endereco endereco, String cpf) {
+		super(clienteId, nome, endereco);
 		this.cpf = cpf;
 	}
 
