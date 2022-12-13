@@ -68,11 +68,22 @@ public class UC {
 	}
 	
 	public int faturar (int leitura) {
-		return leitura;
+		this.leituraAnterior = this.leituraAtual; //valor da leitura anterior recebe o atual
+		this.leituraAtual = leitura; //o atual passa a receber o corrente
+		
+		int consumo; //é a diferença entre o atual e o anterior.
+		
+		consumo = this.leituraAtual - this.leituraAnterior;
+		
+		return consumo;
 	}
 	
 	public int pegarConsumo () {
-		return 0;
+		int consumo; //é a diferença entre o atual e o anterior.
+		
+		consumo = this.leituraAtual - this.leituraAnterior;
+		
+		return consumo;
 	}
 
 }
