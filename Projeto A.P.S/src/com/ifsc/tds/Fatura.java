@@ -66,5 +66,9 @@ public class Fatura {
 		return texto;
 	}
 	
+	public void imprimirFatura (Fatura vetor[]) {
+		System.out.println(vetor);
+	}
+	
 
 }
