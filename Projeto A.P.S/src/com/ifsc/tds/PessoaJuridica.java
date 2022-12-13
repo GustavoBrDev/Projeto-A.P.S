@@ -18,7 +18,13 @@ public class PessoaJuridica extends Cliente {
 	}
 	
 	public String toString() {
-		return "";
+		String texto;
+		
+		texto = super.toString();
+		
+		texto += "\nCPNJ: " + getCpnj();
+		
+		return texto; 
 	}
 	
 }

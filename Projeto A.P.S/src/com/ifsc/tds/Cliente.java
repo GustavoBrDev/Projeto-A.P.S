@@ -39,7 +39,11 @@ public class Cliente  {
 	}
 	
 	public String toString () {
-		return "";
+		String texto;
+		
+		texto = "--------------------" + "\nNome: " + getNome() + "\nEndereço" + getEndereco() + "\n ID do Cliente: " + getClienteld();
+		
+		return texto;
 	}
 	
 	

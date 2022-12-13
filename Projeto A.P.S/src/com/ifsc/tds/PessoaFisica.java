@@ -18,7 +18,13 @@ public class PessoaFisica extends Cliente {
 	}
 	
 	public String toString () {
-		return "Não sei o que é isso";
+		String texto;
+		
+		texto = super.toString();
+		
+		texto += "\nCPF: " + getCpf();
+		
+		return texto; 
 	}
 	
 }
