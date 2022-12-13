@@ -2,6 +2,15 @@ package com.ifsc.tds;
 
 public class Fatura {
 	
+	public Fatura (int faturaId, int MesAno, UC unidadeConsumidora, int consumo, boolean pago, Cliente cliente) {
+		this.faturald = faturaId;
+		this.MesAno = MesAno;
+		this.unidadeConsumidora = unidadeConsumidora;
+		this.consumo = consumo;
+		this.pago = pago;
+		this.cliente= cliente;
+	}
+	
 	private int faturald;
 	
 	private int MesAno;
@@ -11,6 +20,16 @@ public class Fatura {
 	private int consumo;
 	
 	private boolean pago;
+	
+	private Cliente cliente;
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public int getFaturald() {
 		return faturald;
