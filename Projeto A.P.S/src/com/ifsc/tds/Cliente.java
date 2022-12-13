@@ -6,24 +6,13 @@ public abstract class Cliente  {
 		this.clienteld = clienteId;
 		this.nome = nome;
 		this.endereco = endereco;
-		this.fatura= fatura;
 	}
 	
-	private Fatura fatura;
-	
-	private int clienteld;
+	private int clienteld=0;
 	
 	private String nome;
 	
 	private Endereco endereco;
-
-	public Fatura getFatura() {
-		return fatura;
-	}
-
-	public void setFatura(Fatura fatura) {
-		this.fatura = fatura;
-	}
 
 	public Endereco getEndereco() {
 		return endereco;
