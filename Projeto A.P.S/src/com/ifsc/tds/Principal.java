@@ -3,6 +3,10 @@ package com.ifsc.tds;
 import java.util.Scanner;
 
 public class Principal {
+	
+	private static int qtdeClientes=0;
+	
+	private static Cliente clientesVetor [];
 
 	public static void main(String[] args) {
 
@@ -55,8 +59,57 @@ public class Principal {
 	}
 	
 
-	public static void cadastrarCliente() {
-
+	public static  void cadastrarCliente() {
+		Scanner teclado = new Scanner(System.in);
+		int contTipoPessoa;
+		String nome;
+		Endereco endereco;
+		int clienteId;
+		int tipoCliente=0;
+		String documento;
+		Cliente cliente;
+		
+		
+		for (contTipoPessoa =0; contTipoPessoa != 1;) {
+			System.out.println("Selecione o tipo do cadastro a ser realizado: ");
+			System.out.println("\n\t1 - Pessoa Fisíca ");
+			System.out.println("\n\t2 - Pessoa Jurídica");
+			
+			System.out.println("\n\nInforme o número correspodente: ");
+			tipoCliente = teclado.nextInt();
+			
+			if (tipoCliente == 1 || tipoCliente ==2) {
+				contTipoPessoa =1;
+			}
+			else {
+				System.out.println("\n\nSELEÇÃO INVÁLIDA...");
+				System.out.println("\nTENTANDO NOVAMENTE...");
+			}
+		}
+		System.out.println("\nInforme o nome");
+		nome = teclado.next();
+		endereco = cadastrarEndereco();
+		
+		if (tipoCliente ==1) {
+			System.out.println("\nInforme o CPF: ");
+			documento = teclado.next();
+			
+			clienteId = qtdeClientes;
+			qtdeClientes++;
+			
+			cliente = new PessoaFisica(clienteId, nome, endereco, documento );
+		}
+		else {
+			System.out.println("\nInforme o CPJ: ");
+			documento = teclado.next();
+			
+			clienteId = qtdeClientes;
+			
+			cliente = new PessoaJuridica(clienteId, nome, endereco, documento );
+		}
+		clientesVetor[qtdeClientes] = cliente;
+		qtdeClientes++;
+		teclado.close();
 	}
 	
 	public static void cadastrarUC() {
@@ -71,5 +124,9 @@ public class Principal {
 	}
 	public static void exibirRelatorios () {
 		
+	}
+	public static Endereco cadastrarEndereco () {
+		Endereco endereco = new Endereco ("a",5, "c", "d", "e");
+		return  endereco;
 	}
 }
