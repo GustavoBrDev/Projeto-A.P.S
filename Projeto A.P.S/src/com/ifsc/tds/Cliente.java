@@ -43,7 +43,7 @@ public class Cliente  {
 		
 		texto = "--------------------" + "\nNome: " + getNome() + "\nEndereço" + getEndereco() + "\n ID do Cliente: " + getClienteld();
 		
-		return texto;
+		return texto; 
 	}
 	
 	

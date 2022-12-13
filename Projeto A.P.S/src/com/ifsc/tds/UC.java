@@ -64,7 +64,7 @@ public class UC {
 		
 		texto = "------------" + "\n\nCliente: \n " + getCliente().toString() + "\n\nLeitura Atual: " + getLeituraAtual() + "\nLeitura anterior: " + getLeituraAnterior() + "\n\nEndereco: \n" + endereco.toString() + "\n\n\nID da Unidade Consumidora: " + getUcld();
 		
-		return texto; 
+		return texto;  
 	}
 	
 	public int faturar (int leitura) {

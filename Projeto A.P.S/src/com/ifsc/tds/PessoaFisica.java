@@ -24,7 +24,7 @@ public class PessoaFisica extends Cliente {
 		
 		texto += "\nCPF: " + getCpf();
 		
-		return texto; 
+		return texto;  
 	}
 	
 }

@@ -24,7 +24,7 @@ public class PessoaJuridica extends Cliente {
 		
 		texto += "\nCPNJ: " + getCpnj();
 		
-		return texto; 
+		return texto;  
 	}
 	
 }

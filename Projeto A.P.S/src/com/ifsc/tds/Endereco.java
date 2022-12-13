@@ -61,7 +61,7 @@ public class Endereco {
 	}
 	
 	public String toString() {
-		String texto;
+		String texto; 
 		
 		texto = "---------------" + "\nEstado: " +getEstado() + "\nCidade:" + "\nCEP" + getCep() + "\nRua: " +getRua() + "\nNumero: " + getNumero();
 		
