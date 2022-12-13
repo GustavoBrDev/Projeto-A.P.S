@@ -126,7 +126,31 @@ public class Principal {
 		
 	}
 	public static Endereco cadastrarEndereco () {
-		Endereco endereco = new Endereco ("a",5, "c", "d", "e");
+		Scanner teclado = new Scanner(System.in);
+		String rua;
+		String cidade;
+		String estado;
+		int numero;
+		String cep;
+		
+		System.out.println("\nInforme o estado: ");
+		estado = teclado.next();
+		
+		System.out.println("\nInforme a cidade: ");
+		cidade = teclado.next();
+		
+		System.out.println("\nInforme a rua: ");
+		rua = teclado.next();
+		
+		System.out.println("\nInforme o cep: ");
+		cep = teclado.next();
+		
+		System.out.println("\nInforme o número: ");
+		numero = teclado.nextInt();
+		
+		teclado.close();
+		
+		Endereco endereco = new Endereco(rua, numero, cep, cidade, estado);
 		return  endereco;
 	}
 }
