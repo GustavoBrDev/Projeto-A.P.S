@@ -77,20 +77,23 @@ public class Fatura {
 		
 		if (this.cliente.tipoCliente() == 0) { //Pessoa Fisíca
 			if (consumo <= 200) {
-				valor = consumo * tarifa.getTarResidencial1();
+				valor += consumo * tarifa.getTarResidencial1();
 			}
 			else {
-				valor = consumo * tarifa.getTarResidencial2();
+				valor += consumo * tarifa.getTarResidencial2();
 			}
 		}
 		else { //Pessoa Juridca (1)
 			if (consumo <= 500) {
-				valor = consumo * tarifa.getTarComercial1();
+				valor += consumo * tarifa.getTarComercial1();
 			}
 			else {
-				valor = consumo * tarifa.getTarComercial2();
+				valor += consumo * tarifa.getTarComercial2();
 			}
 		}
+		
+		valor += tarifa.getIcms();
+		valor += tarifa.getTaxalluminacaoPublica();
 		
 		return valor;
 	}
