@@ -46,5 +46,7 @@ public abstract class Cliente  {
 		return texto; 
 	}
 	
+	public abstract int tipoCliente ();
+	
 	
 }

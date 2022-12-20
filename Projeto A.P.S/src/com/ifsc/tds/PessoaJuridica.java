@@ -26,5 +26,10 @@ public class PessoaJuridica extends Cliente {
 		
 		return texto;  
 	}
+
+	@Override
+	public int tipoCliente() {
+		return 1;
+	}
 	
 }
