@@ -2,11 +2,12 @@ package com.ifsc.tds;
 
 public class UC {
 	
-	public UC (int ucId, Cliente cliente, int leituraAnterior, int leituraAtual) {
+	public UC (int ucId, Cliente cliente, int leituraAnterior, int leituraAtual, Endereco endereco) {
 		this.ucld = ucId;
 		this.cliente = cliente;
 		this.leituraAnterior = leituraAnterior;
 		this.leituraAtual = leituraAtual;
+		this.endereco =endereco;
 	}
 	
 	private int ucld;

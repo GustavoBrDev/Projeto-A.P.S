@@ -122,7 +122,7 @@ public class Principal {
 		int leituraAnterior;
 		int ucId;
 		Cliente cliente = null;
-		Endereco endereco;
+		Endereco endereco = null;
 		int escolhaCliente = 0;
 		int escolhaEndereco = 0;
 		int idEscolhido;
@@ -192,7 +192,7 @@ public class Principal {
 			}
 		}
 		ucId = qtdeUC;
-		UC uc = new UC(ucId, cliente, leituraAnterior, leituraAtual);
+		UC uc = new UC(ucId, cliente, leituraAnterior, leituraAtual, endereco);
 		ucVetor[qtdeUC] = uc;
 		qtdeUC++;
 
