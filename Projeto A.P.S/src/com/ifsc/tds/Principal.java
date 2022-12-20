@@ -3,24 +3,24 @@ package com.ifsc.tds;
 import java.util.Scanner;
 
 public class Principal {
-	
-	private static int qtdeClientes=0;
-	
-	private static Cliente clientesVetor [];
-	
-	private static int qtdeUC=0;
-	
-	private static Cliente ucVetor [];
-	
-	private static int qtdeFaturas=0;
-	
-	private static Cliente faturasVetor [];
+
+	private static int qtdeClientes = 0;
+
+	private static Cliente clientesVetor[];
+
+	private static int qtdeUC = 0;
+
+	private static UC ucVetor[];
+
+	private static int qtdeFaturas = 0;
+
+	private static Fatura faturasVetor[];
 
 	public static void main(String[] args) {
 
 		int contEscolha;
 		Scanner teclado = new Scanner(System.in);
-		
+
 		for (contEscolha = 0; contEscolha != 1;) {
 
 			System.out.println("Bem vindo usuário, selecione sua necessidade: ");
@@ -38,25 +38,162 @@ public class Principal {
 			int escolha = teclado.nextInt();
 
 			switch (escolha) {
+			case 1:
+				cadastrarCliente();
+				contEscolha = 1;
+				break;
+			case 2:
+				cadastrarUC();
+				contEscolha = 1;
+				break;
+			case 3:
+				fazerLeitura();
+				contEscolha = 1;
+				break;
+			case 4:
+				faturarConsumo();
+				contEscolha = 1;
+				break;
+			case 5:
+				exibirRelatorios();
+				contEscolha = 1;
+				break;
+			default:
+				System.out.println("\n\nSELEÇÃO INVÁLIDA...");
+				System.out.println("\nTENTANDO NOVAMENTE...");
+			}
+		}
+		teclado.close();
+	}
+
+	public static Cliente cadastrarCliente() {
+		Scanner teclado = new Scanner(System.in);
+		int contTipoPessoa;
+		String nome;
+		Endereco endereco;
+		int clienteId;
+		int tipoCliente = 0;
+		String documento;
+		Cliente cliente;
+
+		for (contTipoPessoa = 0; contTipoPessoa != 1;) {
+			System.out.println("Selecione o tipo do cadastro a ser realizado: ");
+			System.out.println("\n\t1 - Pessoa Fisíca ");
+			System.out.println("\n\t2 - Pessoa Jurídica");
+
+			System.out.println("\n\nInforme o número correspodente: ");
+			tipoCliente = teclado.nextInt();
+
+			if (tipoCliente == 1 || tipoCliente == 2) {
+				contTipoPessoa = 1;
+			} else {
+				System.out.println("\n\nSELEÇÃO INVÁLIDA...");
+				System.out.println("\nTENTANDO NOVAMENTE...");
+			}
+		}
+		System.out.println("\nInforme o nome");
+		nome = teclado.next();
+		endereco = cadastrarEndereco();
+
+		if (tipoCliente == 1) {
+			System.out.println("\nInforme o CPF: ");
+			documento = teclado.next();
+
+			clienteId = qtdeClientes;
+			qtdeClientes++;
+
+			cliente = new PessoaFisica(clienteId, nome, endereco, documento);
+		} else {
+			System.out.println("\nInforme o CPJ: ");
+			documento = teclado.next();
+
+			clienteId = qtdeClientes;
+
+			cliente = new PessoaJuridica(clienteId, nome, endereco, documento);
+		}
+		clientesVetor[qtdeClientes] = cliente;
+		qtdeClientes++;
+		teclado.close();
+		return cliente;
+	}
+
+	public static void cadastrarUC() {
+		int leituraAtual;
+		int leituraAnterior;
+		int ucId;
+		Cliente cliente;
+		Endereco endereco;
+		int escolhaCliente = 0;
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("\nInforme a leitura atual da Unidade Consumidora: ");
+		leituraAtual = teclado.nextInt();
+
+		System.out.println("\nInforme a leitura anterior da Unidade Consumidora: ");
+		leituraAnterior = teclado.nextInt();
+
+		// Seleção ou cadastro do cliente
+
+		for (int contEscolhaCliente = 0; contEscolhaCliente != 1;) {
+			System.out.println("\n\nSelecione uma das opções abaixo para o cliente: ");
+			System.out.println("\n 1 - Cadastrar novo cliente ");
+			System.out.println("\n 2 - Utilizar um cliente já cadastrado");
+			System.out.println("\n\nInforme o número da seleção correspodente: ");
+
+			switch (escolhaCliente) {
+			case 1:
+				cliente = cadastrarCliente();
+				contEscolhaCliente = 1;
+				break;
+			case 2:
+				contEscolhaCliente = 1;
+				// Imprimir todos os clientes;
+				break;
+			default:
+
+			}
+		}
+
+	}
+
+	public static void fazerLeitura() {
+		// Fatorar a UC
+		// Primeiramente, realizar o cadastro do UC
+	}
+
+	public static void faturarConsumo() {
+
+	}
+
+	public static void exibirRelatorios() {
+		int escolha;
+		Scanner teclado = new Scanner(System.in);
+
+		for (int contEscolha = 0; contEscolha != 1;) {
+			System.out.println("\n\n============ EXIBIR RELATÓRIOS ============\n");
+			System.out.println("\r 1 - Todos os clientes\r\n" + "\r\n" + "      2 -  Faturar pendentes\r\n" + "\r\n"
+					+ "      3 - Faturas de um cliente específico (cpf/cnpj)\r\n" + "\r\n"
+					+ "      4 - Todas as faturas de um mês em específico (informado pelo usuário)");
+
+			System.out.println("\n\nInforme o número correspodente a sua seleção: ");
+			escolha = teclado.nextInt();
+
+			switch (escolha) {
 				case 1:
-					cadastrarCliente();
-					contEscolha=1;
+					imprimirClientes();
+					contEscolha =1;
 					break;
 				case 2:
-					cadastrarUC();
+					faturasPendente();
 					contEscolha =1;
 					break;
 				case 3:
-					fazerLeitura();
+					faturaPorCliente();
 					contEscolha =1;
 					break;
 				case 4:
-					faturarConsumo();
-					contEscolha=1;
-					break;
-				case 5:
-					exibirRelatorios();
-					contEscolha=1;
+					faturaPorMes();
+					contEscolha =1;
 					break;
 				default:
 					System.out.println("\n\nSELEÇÃO INVÁLIDA...");
@@ -65,101 +202,54 @@ public class Principal {
 		}
 		teclado.close();
 	}
-	
 
-	public static  void cadastrarCliente() {
-		Scanner teclado = new Scanner(System.in);
-		int contTipoPessoa;
-		String nome;
-		Endereco endereco;
-		int clienteId;
-		int tipoCliente=0;
-		String documento;
-		Cliente cliente;
-		
-		
-		for (contTipoPessoa =0; contTipoPessoa != 1;) {
-			System.out.println("Selecione o tipo do cadastro a ser realizado: ");
-			System.out.println("\n\t1 - Pessoa Fisíca ");
-			System.out.println("\n\t2 - Pessoa Jurídica");
-			
-			System.out.println("\n\nInforme o número correspodente: ");
-			tipoCliente = teclado.nextInt();
-			
-			if (tipoCliente == 1 || tipoCliente ==2) {
-				contTipoPessoa =1;
-			}
-			else {
-				System.out.println("\n\nSELEÇÃO INVÁLIDA...");
-				System.out.println("\nTENTANDO NOVAMENTE...");
-			}
+	public static void imprimirClientes() {
+
+		if (qtdeClientes == 0) {
+			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
+		} else {
+
 		}
-		System.out.println("\nInforme o nome");
-		nome = teclado.next();
-		endereco = cadastrarEndereco();
-		
-		if (tipoCliente ==1) {
-			System.out.println("\nInforme o CPF: ");
-			documento = teclado.next();
-			
-			clienteId = qtdeClientes;
-			qtdeClientes++;
-			
-			cliente = new PessoaFisica(clienteId, nome, endereco, documento );
-		}
-		else {
-			System.out.println("\nInforme o CPJ: ");
-			documento = teclado.next();
-			
-			clienteId = qtdeClientes;
-			
-			cliente = new PessoaJuridica(clienteId, nome, endereco, documento );
-		}
-		clientesVetor[qtdeClientes] = cliente;
-		qtdeClientes++;
-		teclado.close();
 	}
-	
-	public static void cadastrarUC() {
-		
+
+	public static void faturasPendente() {
+
 	}
-	
-	public static void fazerLeitura () {
-		//Fatorar a UC
-		//Primeiramente, realizar o cadastro do UC
+
+	public static void faturaPorCliente() {
+
 	}
-	public static void faturarConsumo () {
-		
+
+	public static void faturaPorMes() {
+
 	}
-	public static void exibirRelatorios () {
-		
-	}
-	public static Endereco cadastrarEndereco () {
+
+	public static Endereco cadastrarEndereco() {
 		Scanner teclado = new Scanner(System.in);
 		String rua;
 		String cidade;
 		String estado;
 		int numero;
 		String cep;
-		
+
 		System.out.println("\nInforme o estado: ");
 		estado = teclado.next();
-		
+
 		System.out.println("\nInforme a cidade: ");
 		cidade = teclado.next();
-		
+
 		System.out.println("\nInforme a rua: ");
 		rua = teclado.next();
-		
+
 		System.out.println("\nInforme o cep: ");
 		cep = teclado.next();
-		
+
 		System.out.println("\nInforme o número: ");
 		numero = teclado.nextInt();
-		
+
 		teclado.close();
-		
+
 		Endereco endereco = new Endereco(rua, numero, cep, cidade, estado);
-		return  endereco;
+		return endereco;
 	}
 }
