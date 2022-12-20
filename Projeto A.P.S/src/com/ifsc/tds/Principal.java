@@ -121,9 +121,10 @@ public class Principal {
 		int leituraAtual;
 		int leituraAnterior;
 		int ucId;
-		Cliente cliente;
+		Cliente cliente = null;
 		Endereco endereco;
 		int escolhaCliente = 0;
+		int escolhaEndereco =0;
 		int idEscolhido;
 		Scanner teclado = new Scanner(System.in);
 
@@ -140,6 +141,7 @@ public class Principal {
 			System.out.println("\n 1 - Cadastrar novo cliente ");
 			System.out.println("\n 2 - Utilizar um cliente já cadastrado");
 			System.out.println("\n\nInforme o número da seleção correspodente: ");
+			escolhaCliente = teclado.nextInt();
 
 			switch (escolhaCliente) {
 			case 1:
@@ -154,6 +156,11 @@ public class Principal {
 				
 				if (idEscolhido >= 0 && idEscolhido < qtdeClientes) {
 					cliente = clientesVetor[idEscolhido];
+					contEscolhaCliente =1;
+				}
+				else {
+					System.out.println("\n\nSELEÇÃO INVÁLIDA... ");
+					System.out.println("\nTENTE NOVAMENTE...");
 				}
 				break;
 			default:
@@ -161,6 +168,35 @@ public class Principal {
 				System.out.println("\nTENTE NOVAMENTE...");
 			}
 		}
+		
+		//Utilização ou cadastro do endereço
+		
+		for (int contEscolhaEndereco = 0; contEscolhaEndereco != 1;) {
+			System.out.println("\n\nSelecione uma das opções abaixo para o endereco: ");
+			System.out.println("\n 1 - Cadastrar novo endereco ");
+			System.out.println("\n 2 - Utilizar o endereco do cliente");
+			System.out.println("\n\nInforme o número da seleção correspodente: ");
+			
+			escolhaEndereco = teclado.nextInt();
+
+			switch (escolhaEndereco) {
+			case 1:
+				endereco = cadastrarEndereco();
+				contEscolhaEndereco = 1;
+				break;
+			case 2:
+				endereco = cliente.getEndereco();
+				contEscolhaEndereco =1;
+			default:
+				System.out.println("\n\nSELEÇÃO INVÁLIDA... ");
+				System.out.println("\nTENTE NOVAMENTE...");
+			}
+		}
+		ucId = qtdeUC;
+		UC uc =  new UC(ucId, cliente, leituraAnterior, leituraAtual);
+		ucVetor[qtdeUC] = uc;
+		qtdeUC++;
+		
 		teclado.close();
 	}
 
