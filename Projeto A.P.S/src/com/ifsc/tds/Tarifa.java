@@ -3,7 +3,7 @@ package com.ifsc.tds;
 public class Tarifa {
 	private double tarResidencial1 = 0.3879 ;
 	
-	private double tarResidencial = 0.4500 ;
+	private double tarResidencial2 = 0.4500 ;
 	
 	private double tarComercial1 = 0.42550 ;
 	
@@ -21,12 +21,12 @@ public class Tarifa {
 		this.tarResidencial1 = tarResidencial1;
 	}
 
-	public double getTarResidencial() {
-		return tarResidencial;
+	public double getTarResidencial2() {
+		return tarResidencial2;
 	}
 
-	public void setTarResidencial(double tarResidencial) {
-		this.tarResidencial = tarResidencial;
+	public void setTarResidencial2(double tarResidencial) {
+		this.tarResidencial2 = tarResidencial;
 	}
 
 	public double getTarComercial1() {
