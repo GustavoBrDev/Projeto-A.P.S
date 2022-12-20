@@ -124,6 +124,7 @@ public class Principal {
 		Cliente cliente;
 		Endereco endereco;
 		int escolhaCliente = 0;
+		int idEscolhido;
 		Scanner teclado = new Scanner(System.in);
 
 		System.out.println("\nInforme a leitura atual da Unidade Consumidora: ");
@@ -146,14 +147,21 @@ public class Principal {
 				contEscolhaCliente = 1;
 				break;
 			case 2:
-				contEscolhaCliente = 1;
-				// Imprimir todos os clientes;
+				imprimirClientes();
+				
+				System.out.println("\n\nInforme o ID do cliente selecionado: ");
+				idEscolhido = teclado.nextInt();
+				
+				if (idEscolhido >= 0 && idEscolhido < qtdeClientes) {
+					cliente = clientesVetor[idEscolhido];
+				}
 				break;
 			default:
-
+				System.out.println("\n\nSELEÇÃO INVÁLIDA... ");
+				System.out.println("\nTENTE NOVAMENTE...");
 			}
 		}
-
+		teclado.close();
 	}
 
 	public static void fazerLeitura() {
@@ -208,12 +216,32 @@ public class Principal {
 		if (qtdeClientes == 0) {
 			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
 		} else {
-
+			System.out.println("\n\n======== CLIENTES CADASTRADOS ======= ");
+			for (int contImpressao =0; contImpressao < qtdeClientes; contImpressao++) {
+				System.out.println("\n\n"+ (contImpressao + 1) + "° Cliente\n\n");
+				clientesVetor[contImpressao].toString();
+			}
 		}
 	}
 
 	public static void faturasPendente() {
-
+		int encontrado=0;
+		if (qtdeFaturas == 0) {
+			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
+		} else {
+			System.out.println("\n\n======== FATURAS PENDENTES ======= ");
+			for (int contImpressao =0; contImpressao < qtdeFaturas; contImpressao++) {
+				if (! faturasVetor[contImpressao].isPago()) {
+					System.out.println("\n\n"+ (encontrado + 1) + "° Fatura Pendente\n\n");
+					faturasVetor[contImpressao].toString();
+					encontrado++;
+				}
+			}
+		}
+		if (encontrado == 0) {
+			System.out.println("\n\nNÃO HÁ FATURAS PENDENTES ");
+			System.out.println("\nNÍNGUEM ESTÁ NO SERASA");
+		}
 	}
 
 	public static void faturaPorCliente() {
