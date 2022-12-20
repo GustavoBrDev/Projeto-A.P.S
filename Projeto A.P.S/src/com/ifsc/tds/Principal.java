@@ -124,7 +124,7 @@ public class Principal {
 		Cliente cliente = null;
 		Endereco endereco;
 		int escolhaCliente = 0;
-		int escolhaEndereco =0;
+		int escolhaEndereco = 0;
 		int idEscolhido;
 		Scanner teclado = new Scanner(System.in);
 
@@ -150,15 +150,14 @@ public class Principal {
 				break;
 			case 2:
 				imprimirClientes();
-				
+
 				System.out.println("\n\nInforme o ID do cliente selecionado: ");
 				idEscolhido = teclado.nextInt();
-				
+
 				if (idEscolhido >= 0 && idEscolhido < qtdeClientes) {
 					cliente = clientesVetor[idEscolhido];
-					contEscolhaCliente =1;
-				}
-				else {
+					contEscolhaCliente = 1;
+				} else {
 					System.out.println("\n\nSELEÇÃO INVÁLIDA... ");
 					System.out.println("\nTENTE NOVAMENTE...");
 				}
@@ -168,15 +167,15 @@ public class Principal {
 				System.out.println("\nTENTE NOVAMENTE...");
 			}
 		}
-		
-		//Utilização ou cadastro do endereço
-		
+
+		// Utilização ou cadastro do endereço
+
 		for (int contEscolhaEndereco = 0; contEscolhaEndereco != 1;) {
 			System.out.println("\n\nSelecione uma das opções abaixo para o endereco: ");
 			System.out.println("\n 1 - Cadastrar novo endereco ");
 			System.out.println("\n 2 - Utilizar o endereco do cliente");
 			System.out.println("\n\nInforme o número da seleção correspodente: ");
-			
+
 			escolhaEndereco = teclado.nextInt();
 
 			switch (escolhaEndereco) {
@@ -186,17 +185,17 @@ public class Principal {
 				break;
 			case 2:
 				endereco = cliente.getEndereco();
-				contEscolhaEndereco =1;
+				contEscolhaEndereco = 1;
 			default:
 				System.out.println("\n\nSELEÇÃO INVÁLIDA... ");
 				System.out.println("\nTENTE NOVAMENTE...");
 			}
 		}
 		ucId = qtdeUC;
-		UC uc =  new UC(ucId, cliente, leituraAnterior, leituraAtual);
+		UC uc = new UC(ucId, cliente, leituraAnterior, leituraAtual);
 		ucVetor[qtdeUC] = uc;
 		qtdeUC++;
-		
+
 		teclado.close();
 	}
 
@@ -223,25 +222,25 @@ public class Principal {
 			escolha = teclado.nextInt();
 
 			switch (escolha) {
-				case 1:
-					imprimirClientes();
-					contEscolha =1;
-					break;
-				case 2:
-					faturasPendente();
-					contEscolha =1;
-					break;
-				case 3:
-					faturaPorCliente();
-					contEscolha =1;
-					break;
-				case 4:
-					faturaPorMes();
-					contEscolha =1;
-					break;
-				default:
-					System.out.println("\n\nSELEÇÃO INVÁLIDA...");
-					System.out.println("\nTENTANDO NOVAMENTE...");
+			case 1:
+				imprimirClientes();
+				contEscolha = 1;
+				break;
+			case 2:
+				faturasPendente();
+				contEscolha = 1;
+				break;
+			case 3:
+				faturaPorCliente();
+				contEscolha = 1;
+				break;
+			case 4:
+				faturaPorMes();
+				contEscolha = 1;
+				break;
+			default:
+				System.out.println("\n\nSELEÇÃO INVÁLIDA...");
+				System.out.println("\nTENTANDO NOVAMENTE...");
 			}
 		}
 		teclado.close();
@@ -253,22 +252,22 @@ public class Principal {
 			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
 		} else {
 			System.out.println("\n\n======== CLIENTES CADASTRADOS ======= ");
-			for (int contImpressao =0; contImpressao < qtdeClientes; contImpressao++) {
-				System.out.println("\n\n"+ (contImpressao + 1) + "° Cliente\n\n");
+			for (int contImpressao = 0; contImpressao < qtdeClientes; contImpressao++) {
+				System.out.println("\n\n" + (contImpressao + 1) + "° Cliente\n\n");
 				clientesVetor[contImpressao].toString();
 			}
 		}
 	}
 
 	public static void faturasPendente() {
-		int encontrado=0;
+		int encontrado = 0;
 		if (qtdeFaturas == 0) {
 			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
 		} else {
 			System.out.println("\n\n======== FATURAS PENDENTES ======= ");
-			for (int contImpressao =0; contImpressao < qtdeFaturas; contImpressao++) {
-				if (! faturasVetor[contImpressao].isPago()) {
-					System.out.println("\n\n"+ (encontrado + 1) + "° Fatura Pendente\n\n");
+			for (int contImpressao = 0; contImpressao < qtdeFaturas; contImpressao++) {
+				if (!faturasVetor[contImpressao].isPago()) {
+					System.out.println("\n\n" + (encontrado + 1) + "° Fatura Pendente\n\n");
 					faturasVetor[contImpressao].toString();
 					encontrado++;
 				}
@@ -281,6 +280,40 @@ public class Principal {
 	}
 
 	public static void faturaPorCliente() {
+		int encontrado = 0;
+		int idEscolhido = 0;
+		Scanner teclado = new Scanner(System.in);
+		Cliente cliente = null;
+
+		if (qtdeFaturas == 0) {
+			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
+		} else {
+			for (int selecaoCliente = 0; selecaoCliente != 1;) {
+				imprimirClientes();
+
+				System.out.println("\n\nInforme o ID do cliente selecionado: ");
+				idEscolhido = teclado.nextInt();
+
+				if (idEscolhido >= 0 && idEscolhido < qtdeClientes) {
+					cliente = clientesVetor[idEscolhido];
+					selecaoCliente =1;
+				} else {
+					System.out.println("\n\nSELEÇÃO INVÁLIDA... ");
+					System.out.println("\nTENTE NOVAMENTE...");
+				}
+			}
+			System.out.println("\n\n======== FATURAS DO CLIENTE ======= ");
+			for (int contImpressao = 0; contImpressao < qtdeFaturas; contImpressao++) {
+				if (faturasVetor[contImpressao].getCliente() == cliente) {
+					System.out.println("\n\n" + (encontrado + 1) + "° Fatura\n\n");
+					faturasVetor[contImpressao].toString();
+					encontrado++;
+				}
+			}
+		}
+		if (encontrado == 0) {
+			System.out.println("\n\nO CLIENTE NÃO HÁ FATURAS ");
+		}
 
 	}
 
