@@ -273,7 +273,7 @@ public class Principal {
 				}
 			}
 		}
-		if (encontrado == 0) {
+		if (encontrado == 0 && qtdeFaturas != 0) {
 			System.out.println("\n\nNÃO HÁ FATURAS PENDENTES ");
 			System.out.println("\nNÍNGUEM ESTÁ NO SERASA");
 		}
@@ -311,7 +311,7 @@ public class Principal {
 				}
 			}
 		}
-		if (encontrado == 0) {
+		if (encontrado == 0 && qtdeFaturas != 0) {
 			System.out.println("\n\nO CLIENTE NÃO HÁ FATURAS ");
 		}
 		teclado.close();
@@ -336,7 +336,7 @@ public class Principal {
 				}
 			}
 		}
-		if (encontrado == 0) {
+		if (encontrado == 0 && qtdeFaturas != 0) {
 			System.out.println("\n\nNÃO HÁ FATURAS NESTE MÊS ");
 		}
 		teclado.close();
