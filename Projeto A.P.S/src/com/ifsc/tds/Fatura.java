@@ -72,7 +72,27 @@ public class Fatura {
 	}
 	
 	public double calcularValorFatura () {
-		return 0;
+		Tarifa tarifa = new Tarifa();
+		Double valor= (double) 0;
+		
+		if (this.cliente.tipoCliente() == 0) { //Pessoa Fisíca
+			if (consumo <= 200) {
+				valor = consumo * tarifa.getTarResidencial1();
+			}
+			else {
+				valor = consumo * tarifa.getTarResidencial2();
+			}
+		}
+		else { //Pessoa Juridca (1)
+			if (consumo <= 500) {
+				valor = consumo * tarifa.getTarComercial1();
+			}
+			else {
+				valor = consumo * tarifa.getTarComercial2();
+			}
+		}
+		
+		return valor;
 	}
 	public String toString () {
 		String texto = "";
