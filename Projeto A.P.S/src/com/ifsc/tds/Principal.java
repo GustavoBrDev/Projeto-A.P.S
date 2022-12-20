@@ -314,11 +314,32 @@ public class Principal {
 		if (encontrado == 0) {
 			System.out.println("\n\nO CLIENTE NÃO HÁ FATURAS ");
 		}
-
+		teclado.close();
 	}
 
 	public static void faturaPorMes() {
-
+		int encontrado = 0;
+		int mesEscolhido=0;
+		Scanner teclado = new Scanner(System.in);
+		if (qtdeFaturas == 0) {
+			System.out.println("\nNÃO HÁ NADA PARA IMPRIMIR");
+		} else {
+			System.out.println("\n\nInforme o mês a ser pesquisado: ");
+			mesEscolhido = teclado.nextInt();
+			
+			System.out.println("\n\n======== FATURAS NO MÊS " + mesEscolhido + " ======= ");
+			for (int contImpressao = 0; contImpressao < qtdeFaturas; contImpressao++) {
+				if (faturasVetor[contImpressao].getMesAno() == mesEscolhido ) {
+					System.out.println("\n\n" + (encontrado + 1) + "° Fatura do Mes\n\n");
+					faturasVetor[contImpressao].toString();
+					encontrado++;
+				}
+			}
+		}
+		if (encontrado == 0) {
+			System.out.println("\n\nNÃO HÁ FATURAS NESTE MÊS ");
+		}
+		teclado.close();
 	}
 
 	public static Endereco cadastrarEndereco() {
